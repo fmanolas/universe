@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Kubernetes Resource Creator</title>
+</head>
+<body>
+
+<h2>Kubernetes Resource Creator</h2>
+
+<form action="/createResource" method="post" th:object="${kubernetesResource}">
+  <label for="type">Resource Type:</label>
+  <select id="type" name="type" th:field="*{type}">
+    <option value="Namespace">Namespace</option>
+    <option value="Pod">Pod</option>
+    <option value="Job">Job</option>
+    <option value="Deployment">Deployment</option>
+  </select>
+
+  <br/>
+
+  <label for="name">Resource Name:</label>
+  <input type="text" id="name" name="name" th:field="*{name}" required/>
+
+  <br/>
+
+
+  <!-- Additional fields for Pod -->
+  <div th:if="${kubernetesResource.type == 'Pod'}">
+    <label for="dockerImage">Docker Image URL:</label>
+    <input type="text" id="dockerImage" name="dockerImage" th:field="*{dockerImage}" required/>
+
+    <br/>
+
+    <label for="podContainerName">Pod Container Name:</label>
+    <input type="text" id="podContainerName" name="podContainerName" th:field="*{podContainerName}" required/>
+  </div>
+
+  <br/>
+
+
+  <!-- Additional fields for Job -->
+  <div th:if="${kubernetesResource.type == 'Job'}">
+    <label for="namespace">Namespace:</label>
+    <input type="text" id="namespace" name="namespace" th:field="*{namespace}" required/>
+
+    <br/>
+
+    <label for="jobDockerImage">Job Docker Image URL:</label>
+    <input type="text" id="jobDockerImage" name="jobDockerImage" th:field="*{jobDockerImage}" required/>
+
+    <br/>
+
+    <label for="jobContainerName">Job Container Name:</label>
+    <input type="text" id="jobContainerName" name="jobContainerName" th:field="*{jobContainerName}" required/>
+  </div>
+
+  <br/>
+
+  <div th:if="${kubernetesResource.type == 'Deployment'}">
+    <label for="deploymentNamespace">Deployment Namespace:</label>
+    <input type="text" id="deploymentNamespace" name="deploymentNamespace" th:field="*{deploymentNamespace}" required/>
+
+    <br/>
+
+    <label for="deploymentDockerImage">Deployment Docker Image URL:</label>
+    <input type="text" id="deploymentDockerImage" name="deploymentDockerImage" th:field="*{deploymentDockerImage}" required/>
+
+    <br/>
+
+    <label for="deploymentContainerName">Deployment Container Name:</label>
+    <input type="text" id="deploymentContainerName" name="deploymentContainerName" th:field="*{deploymentContainerName}" required/>
+
+    <br/>
+
+    <label for="deploymentLabels">Deployment Labels:</label>
+    <input type="text" id="deploymentLabels" name="deploymentLabels" th:field="*{deploymentLabels}" required/>
+
+    <br/>
+
+    <label for="deploymentMatchLabels">Deployment Match Labels:</label>
+    <input type="text" id="deploymentMatchLabels" name="deploymentMatchLabels" th:field="*{deploymentMatchLabels}" required/>
+  </div>
+
+  <br/>
+
+  <button type="submit">Create Resource</button>
+</form>
+
+</body>
+</html>
