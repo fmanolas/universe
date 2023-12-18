@@ -8,6 +8,7 @@ import io.fabric8.kubernetes.api.model.batch.v1.JobBuilder;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -15,9 +16,14 @@ import java.util.Map;
 @Slf4j
 @Service
 public class KubernetesCreatorService {
+    private final KubernetesClient kubernetesClient;
+
+    @Autowired
+    public KubernetesCreatorService(KubernetesClient client) {
+        this.kubernetesClient = client;
+    }
 
     public void createNameSpace(String nameSpaceName){
-        try (KubernetesClient client = new DefaultKubernetesClient()) {
             // Create a new Namespace object
             Namespace namespace = new Namespace();
 
@@ -27,17 +33,12 @@ public class KubernetesCreatorService {
             namespace.setMetadata(metadata);
 
             // Create the namespace
-            client.namespaces().create(namespace);
-
+            this.kubernetesClient.namespaces().create(namespace);
             log.info("Namespace created successfully.");
-        } catch (Exception e) {
-            log.error("Error creating namespace: " + e.getMessage());
-            e.printStackTrace();
-        }
     }
 
     public void createPod(String podName,String containerName,String image){
-        try (KubernetesClient client = new DefaultKubernetesClient()) {
+
             // Create a new Pod object
             Pod pod = new PodBuilder()
                     .withNewMetadata()
@@ -54,17 +55,12 @@ public class KubernetesCreatorService {
                     .build();
 
             // Create the pod
-            client.pods().inNamespace("default").create(pod);
+            this.kubernetesClient.pods().inNamespace("default").create(pod);
 
             log.info("Pod created successfully.");
-        } catch (Exception e) {
-            log.error("Error creating pod: " + e.getMessage());
-            e.printStackTrace();
-        }
     }
 
     public void createJob(String jobName,String containerName,String nameSpace,String image){
-        try (KubernetesClient client = new DefaultKubernetesClient()) {
             // Create a new Job object
             Job job = new JobBuilder()
                     .withNewMetadata()
@@ -83,17 +79,12 @@ public class KubernetesCreatorService {
                     .build();
 
             // Create the job
-            client.batch().v1().jobs().inNamespace(nameSpace).create(job);
+            this.kubernetesClient.batch().v1().jobs().inNamespace(nameSpace).create(job);
 
             log.info("Job created successfully.");
-        } catch (Exception e) {
-            log.error("Error creating job: " + e.getMessage());
-            e.printStackTrace();
-        }
     }
 
     public void createDeployment(String deploymentName,String namespace,String containerName,String image,String matchLabel,String label){
-        try (KubernetesClient client = new DefaultKubernetesClient()) {
             // Create a new Deployment object
             Deployment deployment = new DeploymentBuilder()
                     .withNewMetadata()
@@ -119,12 +110,8 @@ public class KubernetesCreatorService {
                     .build();
 
             // Create the deployment
-            client.apps().deployments().inNamespace(namespace).create(deployment);
+            this.kubernetesClient.apps().deployments().inNamespace(namespace).create(deployment);
 
             log.info("Deployment created successfully.");
-        } catch (Exception e) {
-            log.error("Error creating deployment: " + e.getMessage());
-            e.printStackTrace();
-        }
     }
 }

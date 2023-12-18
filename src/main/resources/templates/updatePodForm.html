@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Pod</title>
+</head>
+<body>
+<h2>Update Pod</h2>
+<form action="/kubernetes/updatePod" method="post">
+  <input type="hidden" name="namespace" th:value="${namespace}" />
+  <input type="hidden" name="podName" th:value="${podName}" />
+  <label for="newImage">New Container Image:</label>
+  <input type="text" id="newImage" name="newImage" th:value="${newImage}" required />
+  <button type="submit">Update Pod</button>
+</form>
+</body>
+</html>
