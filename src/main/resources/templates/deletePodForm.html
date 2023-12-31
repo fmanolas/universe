@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Pod</title>
+</head>
+<body>
+<h2>Delete Pod</h2>
+<form action="/kubernetes/delete/pod" method="post">
+    <input type="hidden" name="namespace" th:value="${namespace}" />
+    <input type="hidden" name="podName" th:value="${podName}" />
+    <p>Are you sure you want to delete the pod <strong th:text="${podName}"></strong> in namespace <strong th:text="${namespace}"></strong>?</p>
+    <button type="submit">Delete Pod</button>
+</form>
+</body>
+</html>

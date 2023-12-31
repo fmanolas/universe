@@ -1,0 +1,38 @@
+<!-- pod.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kubernetes Resource Creator</title>
+</head>
+<body>
+
+<h2>Kubernetes Resource Creator - Pod</h2>
+
+<form action="/kubernetes/createPod" method="post" th:object="${kubernetesResource}">
+    <!-- Common Fields -->
+    <label for="name">Resource Name:</label>
+    <input type="text" id="name" name="name" th:field="*{name}" required/>
+
+    <br/>
+
+    <!-- Additional fields for Pod -->
+    <label for="dockerImage">Docker Image URL:</label>
+    <input type="text" id="dockerImage" name="dockerImage" th:field="*{dockerImage}" required/>
+
+    <br/>
+
+    <label for="podContainerName">Pod Container Name:</label>
+    <input type="text" id="podContainerName" name="podContainerName" th:field="*{podContainerName}" required/>
+
+    <br/>
+    <label for="namespaceForPod">Pod namespace:</label>
+    <input type="text" id="namespaceForPod" name="namespaceForPod" th:field="*{namespaceForPod}" required/>
+
+    <br/>
+
+    <button type="submit">Create Pod</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Namespaces</title>
+</head>
+<body>
+<h2>All Namespaces</h2>
+<ul>
+    <li th:each="namespace : ${allNamespaces}">
+        <span th:text="${namespace}"></span>
+        <!-- Update Button -->
+        <a th:href="@{'/kubernetes/updateNamespace/' + ${namespace}}">
+            <button>Update</button>
+        </a>
+
+        <!-- Delete Button -->
+        <a th:href="@{'/kubernetes/delete/namespace/' + ${namespace}}">
+            <button>Delete</button>
+        </a>
+    </li>
+</ul>
+</body>
+</html>

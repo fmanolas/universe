@@ -1,6 +1,7 @@
 package universe.controller;
 
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,13 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import universe.dto.UserDto;
 import universe.entity.User;
 import universe.service.UserService;
+import universe.service.impl.UserServiceImpl;
 
 import java.util.List;
 
 @Controller
 public class AuthController {
 
-    private UserService userService;
+    @Autowired
+    private UserServiceImpl userService;
 
     @GetMapping("/index")
     public String home(){

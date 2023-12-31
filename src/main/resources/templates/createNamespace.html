@@ -1,0 +1,20 @@
+<!-- namespace.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kubernetes Resource Creator</title>
+</head>
+<body>
+
+<h2>Kubernetes Resource Creator - Namespace</h2>
+
+<form action="/kubernetes/createNamespace" method="post" th:object="${kubernetesResource}">
+    <!-- Common Fields -->
+    <label for="name">Resource Name:</label>
+    <input type="text" id="name" name="name" th:field="*{name}" required/>
+    <button type="submit">Create Namespace</button>
+</form>
+
+</body>
+</html>

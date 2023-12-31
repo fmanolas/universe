@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Job</title>
+</head>
+<body>
+<h2>Delete Job</h2>
+<form action="/kubernetes/delete/job" method="post">
+    <input type="hidden" name="namespace" th:value="${namespace}" />
+    <input type="hidden" name="jobName" th:value="${jobName}" />
+    <p>Are you sure you want to delete the job <strong th:text="${jobName}"></strong> in namespace <strong th:text="${namespace}"></strong>?</p>
+    <button type="submit">Delete Job</button>
+</form>
+</body>
+</html>

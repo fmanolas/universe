@@ -12,6 +12,7 @@ public class KubernetesResource {
     private String name;
     private String dockerImage; // New field for Pod
     private String podContainerName; // New field for Pod
+    private String namespaceForPod;
     private String namespace; // For Job
     private String jobDockerImage; // For Job
     private String jobContainerName; // For Job

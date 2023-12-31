@@ -1,37 +1,53 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Registration and Login System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-          crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubernetes Resource Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        /* Optional: Add some basic styling for better appearance */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+
+
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/index}">Registration and Login System</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/register}">Register</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<br /><br />
-<div class="container">
-    <div class="row">
-        <h1 class="text-center"> Registration and Login System </h1>
-    </div>
+<h1>Kubernetes Resource Management</h1>
+
+<div class="menu">
+    <a href="/kubernetes/createResources">Create a Resource</a>
+    <a href="/kubernetes/namespaces">Check Namespaces</a>
+    <a href="/kubernetes/pods">Check Pods</a>
+    <a href="/kubernetes/jobs">Check Jobs</a>
+    <a href="/kubernetes/deployments">Check Deployments</a>
 </div>
+
+<div class="content">
+    <p>Welcome to the Kubernetes Resource Management Application. Use the menu above to perform various actions.</p>
+</div>
+
 </body>
 </html>
-

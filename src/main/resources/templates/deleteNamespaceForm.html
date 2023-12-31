@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Namespace</title>
+</head>
+<body>
+<h2>Delete Namespace</h2>
+<form action="/kubernetes/delete/namespace" method="post">
+    <input type="hidden" name="namespaceName" th:value="${namespaceName}" />
+    <p>Are you sure you want to delete the namespace <strong th:text="${namespaceName}"></strong>?</p>
+    <button type="submit">Delete Namespace</button>
+</form>
+</body>
+</html>

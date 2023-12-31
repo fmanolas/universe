@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All Pods</title>
+</head>
+<body>
+<h2>All Pods</h2>
+<ul>
+  <li th:each="pod : ${allPods}">
+    <span th:text="${pod.getValue()}"></span>
+    <!-- Update Button -->
+    <a th:href="@{'/kubernetes/updatePod/'+${pod.getKey()}+'/' + ${pod.getValue()}}">
+      <button>Update</button>
+    </a>
+
+    <!-- Delete Button -->
+    <a th:href="@{'/kubernetes/delete/pod/'+${pod.getKey()}+'/' + ${pod.getValue()}}">
+      <button>Delete</button>
+    </a>
+  </li>
+</ul>
+</body>
+</html>

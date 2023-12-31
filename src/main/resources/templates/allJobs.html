@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All Jobs</title>
+</head>
+<body>
+<h2>All Jobs</h2>
+<ul>
+  <li th:each="job : ${allJobs}">
+    <span th:text="${job.getValue()}"></span>
+    <!-- Update Button -->
+    <a th:href="@{'/kubernetes/updateJob/'+${job.getKey()}+'/' + ${job.getValue()}}">
+      <button>Update</button>
+    </a>
+
+    <!-- Delete Button -->
+    <a th:href="@{'/kubernetes/delete/job/'+${job.getKey()}+'/' + ${job.getValue()}}">
+      <button>Delete</button>
+    </a>
+  </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Deployment</title>
+</head>
+<body>
+<h2>Delete Deployment</h2>
+<form action="/kubernetes/delete/deployment" method="post">
+    <input type="hidden" name="namespace" th:value="${namespace}" />
+    <input type="hidden" name="deploymentName" th:value="${deploymentName}" />
+    <p>Are you sure you want to delete the deployment <strong th:text="${deploymentName}"></strong> in namespace <strong th:text="${namespace}"></strong>?</p>
+    <button type="submit">Delete Deployment</button>
+</form>
+</body>
+</html>
