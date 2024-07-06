@@ -15,7 +15,7 @@
     </a>
 
     <!-- Delete Button -->
-    <a th:href="@{'/kubernetes/delete/pod/'+${pod.getKey()}+'/' + ${pod.getValue()}}">
+    <a th:href="@{'/kubernetes/pod/'+${pod.getKey()}+'/' + ${pod.getValue()}}">
       <button>Delete</button>
     </a>
   </li>
